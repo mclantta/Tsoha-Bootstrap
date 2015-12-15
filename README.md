@@ -1,9 +1,9 @@
-# Tietokantasovelluksen esittelysivu
+﻿# Tietokantasovelluksen esittelysivu
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
-* [Linkki dokumentaatiooni](https://www.github.com)
+* [Linkki sovellukseeni](http://mclantta.users.cs.helsinki.fi/tsohaa/)
+* [Linkki dokumentaatiooni](https://github.com/mclantta/Tsoha-Bootstrap/blob/master/doc/kirjalista-sovellus.pdf)
 
 ## Työn aihe
 
