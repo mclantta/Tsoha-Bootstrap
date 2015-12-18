@@ -1,10 +1,10 @@
-# Tietokantasovelluksen esittelysivu
+﻿# Tietokantasovelluksen esittelysivu
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
-* [Linkki dokumentaatiooni](https://www.github.com)
+* [Linkki sovellukseeni](http://mclantta.users.cs.helsinki.fi/tsohaa/)
+* [Linkki dokumentaatiooni](https://github.com/mclantta/Tsoha-Bootstrap/blob/master/doc/kirjalista-sovellus.pdf)
 
 ## Työn aihe
 
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html) 
+Kirjatietokanta. Sovelluksen ideana on, että käyttäjät voivat listata mitä kaikkia kirjoja he ovat elämänsä aikana lukeneet. Jokaisella käyttäjällä on oma kirjasto, mihin he voivat lisätä kirjoja sovelluksen kirjalistasta. Käyttäjä voi muokata omien kirjojensa tietoja, kuten onko kirja aloittamatta, kesken vai luettu tai kuinka monta kertaa kirja on luettu.
