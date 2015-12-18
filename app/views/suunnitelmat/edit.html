@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Muokkaa omia tietoja:</h1>
+<h2>Ylpeys ja ennakkoluulo</h2>
+
+<form>
+    <label>Status</label>
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+            Luettu
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+            Kesken
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+            Kiinnostunut
+        </label>
+    </div>
+
+    <label>Luettu</label>
+    <div class="form-group">
+        <div class="col-xs-1">
+            <input class="form-control" value="2016" type="text">
+        </div>
+    </div>    
+
+
+    <label>Lukukerrat</label>
+    <div class="form-group">
+        <div class="col-xs-1">
+            <input class="form-control" value="1" type="text">
+        </div>
+    </div>
+
+</form>
+
+
+{% endblock %}

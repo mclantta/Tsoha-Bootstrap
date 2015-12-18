@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Tervetuloa Kirjalistaan</h1>
+<p>
+    Luodaksesi ja tarkastellaksesi omaa listaasi
+    <button>kirjaudu</button> tai <button>rekisteröidy</button>.
+</p>
+<h3>Oletko jo lukenut nämä?</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>Kirjailija</th>
+            <th>1.painoksen julkaisuvuosi</th>
+            <th>Sivumäärä</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <tr>
+            <td><a href="#">Ylpeys ja ennakkoluulo</a></td>
+            <td>Jane Austen</td>
+            <td>1800</td>
+            <td>350</td> 
+        </tr>
+    </tbody>  
+</table>
+{% endblock %}
