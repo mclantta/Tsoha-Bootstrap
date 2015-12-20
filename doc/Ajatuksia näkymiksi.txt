@@ -1,5 +1,5 @@
 - Lista kaikista tietokannan kirjoista
-- Sisäänkirjautumisnäkymä
+
 - Kirjan muokkausnäkymä admin käyttäjällä
-- Yksittäisen kirjan yleiset tiedot
+- Yksittäisen kirjan yleiset tiedot --
 - Kirjautuneen käyttäjän etusivu
