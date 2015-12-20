@@ -25,6 +25,16 @@
     }
     
     public static function edit(){
-        View::make('suunnitelmat/edittii.html');
+        View::make('suunnitelmat/edit.html');
+    }
+    
+    public static function login(){
+        View::make('suunnitelmat/login.html');
+    }
+    public static function signin(){
+        View::make('suunnitelmat/singin.html');
+    }
+    public static function all_books(){
+        View::make('suunnitelmat/all_books.html');
     }
   }

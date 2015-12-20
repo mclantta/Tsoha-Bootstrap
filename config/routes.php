@@ -18,3 +18,13 @@
   $routes->get('/edit/1', function() {
       HelloWorldController::edit();
   });
+
+  $routes->get('/login', function() {
+      HelloWorldController::login();
+  });
+  $routes->get('/signin', function() {
+      HelloWorldController::signin();
+  });
+  $routes->get('/allbooks', function() {
+      HelloWorldController::all_books();
+  });
