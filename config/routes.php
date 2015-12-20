@@ -1,30 +1,32 @@
 <?php
 
-  $routes->get('/', function() {
-    HelloWorldController::start_page();
-  });
+$routes->get('/', function() {
+    Controller::start_page();
+});
 
-  $routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
-  });
-  
-  $routes->get('/book/1', function() {
-      HelloWorldController::book_details(); 
-  });
-  
-  $routes->get('/userlist', function() {
-      HelloWorldController::users_own_list();
-  });
-  $routes->get('/edit/1', function() {
-      HelloWorldController::edit();
-  });
+$routes->get('/hiekkalaatikko', function() {
+    Controller::sandbox();
+});
 
-  $routes->get('/login', function() {
-      HelloWorldController::login();
-  });
-  $routes->get('/signin', function() {
-      HelloWorldController::signin();
-  });
-  $routes->get('/allbooks', function() {
-      HelloWorldController::all_books();
-  });
+$routes->get('/userlist', function() {
+    Controller::users_own_list();
+});
+$routes->get('/edit-user-book/1', function() {
+    Controller::edit();
+});
+
+$routes->get('/login', function() {
+    Controller::login();
+});
+$routes->get('/signin', function() {
+    Controller::signin();
+});
+$routes->get('/allbooks', function() {
+    Controller::all_books();
+});
+$routes->get('/book/1', function() {
+    Controller::book_details();
+});
+$routes->get('/userbook/1', function() {
+    Controller::book_user();
+});
