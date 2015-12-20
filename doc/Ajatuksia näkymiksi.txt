@@ -1,5 +1,3 @@
-- Lista kaikista tietokannan kirjoista
-
+- Yksittäisen kirjan näkymä admin käyttäjällä (poista kirja tietokannasta, muokkaa)
 - Kirjan muokkausnäkymä admin käyttäjällä
-- Yksittäisen kirjan yleiset tiedot --
 - Kirjautuneen käyttäjän etusivu
