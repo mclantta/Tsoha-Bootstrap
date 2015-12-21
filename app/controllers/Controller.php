@@ -1,5 +1,6 @@
 <?php
-
+    
+    require 'app/models/Book.php';
   class Controller extends BaseController{
 
     public static function index(){
@@ -8,7 +9,13 @@
     }
 
     public static function sandbox(){
-      // Testaa koodiasi täällä
+        
+      $book = Book::findOne(1);
+      $books = Book::all();
+      
+      Kint::dump($books);
+      Kint::dump($book);
+      
       View::make('helloworld.html');
     }
     
