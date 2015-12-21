@@ -1,7 +1,7 @@
 <?php
 
 $routes->get('/', function() {
-    Controller::start_page();
+    BookController::firstPageBooks();
 });
 
 $routes->get('/hiekkalaatikko', function() {

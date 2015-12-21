@@ -28,7 +28,7 @@ class Book extends BaseModel {
         return $books;
     }
     public static function findOne($id) {
-        $query = DB::connection()->prepare('SELECT * FROM Book WHERE id = :id LIMIT 1');
+        $query = DB::connection()->prepare('SELECT * FROM Book WHERE id = :id');
         $query->execute(array('id' => $id));
         $row = $query->fetch();
         

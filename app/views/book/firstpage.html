@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Tervetuloa Kirjalistaan</h1>
+<p>
+    Luodaksesi ja tarkastellaksesi omaa listaasi
+    <button>kirjaudu</button> tai <button>rekisteröidy</button>.
+</p>
+<h3>Oletko jo lukenut nämä?</h3>
+<p>Tai tarkastele koko listaa: <a href="http://mclantta.users.cs.helsinki.fi/tsohaa/allbooks">Kaikki kirjat</a></p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+            <th>Kirjailija</th>
+            <th>1.painoksen julkaisuvuosi</th>
+            <th>Sivumäärä</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td><a href="{{base_path}}/allbooks/{{book.id}}">{{book.name}}</a></td>
+            <td>{{book.author}}</td>
+            <td>{{book.publishyear}}</td>
+            <td>{{book.pages}}</td> 
+        </tr>
+        {% endfor %}
+    </tbody>  
+</table>
+{% endblock %}
