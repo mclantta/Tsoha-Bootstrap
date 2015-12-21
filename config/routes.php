@@ -22,11 +22,12 @@ $routes->get('/signin', function() {
     Controller::signin();
 });
 $routes->get('/allbooks', function() {
-    Controller::all_books();
+    BookController::listingBooks();
 });
-$routes->get('/book/1', function() {
-    Controller::book_details();
+$routes->get('/allbooks/:id', function($id) {
+    BookController::gettingDetails($id);
 });
 $routes->get('/userbook/1', function() {
     Controller::book_user();
 });
+

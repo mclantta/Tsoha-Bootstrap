@@ -13,13 +13,14 @@
     </thead>
     
     <tbody>
+        {%for book in books%}
         <tr>
-            <td><a href="#">Ylpeys ja ennakkoluulo</a></td>
-            <td>Jane Austen</td>
-            <td>1800</td>
-            <td>350</td> 
+            <td><a href="{{base_path}}/allbooks/{{book.id}}">{{book.name}}</a></td>
+            <td>{{book.author}}</td>
+            <td>{{book.publishyear}}</td>
+            <td>{{book.pages}}</td> 
         </tr>
+        {% endfor %}
     </tbody>  
 </table>
-
 {% endblock %}

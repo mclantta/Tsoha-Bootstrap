@@ -1,6 +1,6 @@
 <?php
     
-    require 'app/models/Book.php';
+   
   class Controller extends BaseController{
 
     public static function index(){
@@ -42,7 +42,7 @@
         View::make('suunnitelmat/singin.html');
     }
     public static function all_books(){
-        View::make('suunnitelmat/all_books.html');
+        View::make('suunnitelmat/all_books_kokeilu.html');
     }
     public static function book_details(){
         View::make('suunnitelmat/book_details.html');
