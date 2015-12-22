@@ -24,10 +24,17 @@ $routes->get('/signin', function() {
 $routes->get('/allbooks', function() {
     BookController::listingBooks();
 });
-$routes->get('/allbooks/:id', function($id) {
-    BookController::gettingDetails($id);
-});
+
 $routes->get('/userbook/1', function() {
     Controller::book_user();
+});
+$routes->post('/allbooks', function() {
+    BookController::store();
+});
+$routes->get('/allbooks/new', function() {
+    BookController::create();
+});
+$routes->get('/allbooks/:id', function($id) {
+    BookController::gettingDetails($id);
 });
 

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Uuden kirjan lisäys</h1>
+
+<form method="post" action="{{base_path}}/allbooks">
+    <div class="form-group">
+        <label>Nimi</label>
+        <input name="name" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label>Kirjailija</label>
+        <input name="author" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label>Julkaisuvuosi</label>
+        <input name="publishyear" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label>Sivumäärä</label>
+        <input name="pages" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+        <label>Esittely</label>
+        <textarea name="description" class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Lisää</button>
+    </div>
+
+</form>
+
+
+
+{% endblock %}

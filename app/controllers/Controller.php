@@ -47,4 +47,7 @@
     public static function book_details(){
         View::make('suunnitelmat/book_details.html');
     }
+    public static function add_new(){
+        View::make('book/add_new.html');
+    }
   }
