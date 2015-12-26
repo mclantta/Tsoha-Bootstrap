@@ -1,11 +1,12 @@
 ﻿# Tietokantasovelluksen esittelysivu
 
-Yleisiä linkkejä:
+Linkkejä tällä hetkellä tärkeimpiin sivuihin, osassa on jo toiminallisuutta:
 
 * [Linkki sovellukseeni](http://mclantta.users.cs.helsinki.fi/tsohaa/)
 	* [käyttäjän kirjalista](http://mclantta.users.cs.helsinki.fi/tsohaa/userlist)
-	* [käyttäjän kirja](http://mclantta.users.cs.helsinki.fi/tsohaa/book/1)
-	* [käyttäjän kirjan tietojen muokkaus](http://mclantta.users.cs.helsinki.fi/tsohaa/edit/1)
+	* [Yksittäisen kirjan tarkempi näkymä](http://mclantta.users.cs.helsinki.fi/tsohaa/allbooks/1)
+	* [Uuden kirjan lisäyslomake koko tietokantaan](http://mclantta.users.cs.helsinki.fi/tsohaa/allbooks/1)
+	* [Kaikkien kirjojen listaussivu, joka on eri kuin etusivu](http://mclantta.users.cs.helsinki.fi/tsohaa/allbooks)
 
 * [Linkki dokumentaatiooni](https://github.com/mclantta/Tsoha-Bootstrap/blob/master/doc/kirjalista-sovellus.pdf)
 
