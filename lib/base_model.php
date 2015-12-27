@@ -13,7 +13,7 @@
           $this->{$attribute} = $value;
         }
       }
-    }
+    } 
 
     public function errors(){
       // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
@@ -21,9 +21,25 @@
 
       foreach($this->validators as $validator){
         // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
+          $errors = array_merge($errors, $this->{$validator}());
+          
       }
 
       return $errors;
     }
-
+    
+    public function validateLengthNotNull($string, $field) {
+        if($string == '' || $string == null) {
+            $error = $field . ' ei saa olla tyhjä';
+        }
+        
+        return $error;
+    }
+    
+    public function validateInteger($number, $field) {
+        if(is_int($number)) {
+            return $error = $field . ' kentän arvo pitää olla kokonaisluku';
+        }
+        return $error;
+    }
   }

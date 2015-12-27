@@ -9,14 +9,17 @@
     }
 
     public static function sandbox(){
-        
-      $book = Book::findOne(1);
-      $books = Book::all();
-      
-      Kint::dump($books);
-      Kint::dump($book);
-      
-      View::make('helloworld.html');
+//      $jee = new Book(array(
+//          'name' => '',
+//          'author' => '',
+//          'publishyear' => 'jeejee',
+//          'pages' => 'jup'
+//      ));  
+//      
+//      $errors = $jee->errors();
+//      
+//      Kint::dump($errors);
+//      View::make('helloworld.html');
     }
     
     public static function start_page(){

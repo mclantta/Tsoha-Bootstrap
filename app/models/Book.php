@@ -6,6 +6,7 @@ class Book extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
+        $this->validators = array('validateName', 'validateAuthor', 'validatePublishyear', 'validatePages');
     }
 
     public static function all() {
@@ -15,7 +16,7 @@ class Book extends BaseModel {
         $books = array();
 
         foreach ($rows as $row) {
-            
+
             $books[] = new Book(array(
                 'id' => $row['id'],
                 'name' => $row['name'],
@@ -27,14 +28,15 @@ class Book extends BaseModel {
         }
         return $books;
     }
+
     public static function findOne($id) {
         $query = DB::connection()->prepare('SELECT * FROM Book WHERE id = :id');
         $query->execute(array('id' => $id));
         $row = $query->fetch();
-        
+
         if ($row) {
             $book = new Book(array(
-               'name' => $row['name'],
+                'name' => $row['name'],
                 'author' => $row['author'],
                 'publishyear' => $row['publishyear'],
                 'pages' => $row['pages'],
@@ -43,13 +45,34 @@ class Book extends BaseModel {
         }
         return $book;
     }
+
     public function save() {
         $query = DB::connection()->prepare('INSERT INTO Book (name, author, publishyear, pages, description) VALUES (:name, :author, :publishyear, :pages, :description) RETURNING id');
-                
-        $query->execute(array('name' => $this->name, 'author' => $this->author, 'publishyear' => $this->publishyear, 'pages' => $this->pages, 'description' => $this->description));   
-        
+
+        $query->execute(array('name' => $this->name, 'author' => $this->author, 'publishyear' => $this->publishyear, 'pages' => $this->pages, 'description' => $this->description));
+
         $row = $query->fetch();
         $this->id = $row['id'];
+    }
+
+    public function validateName() {
+        $errors[] = parent::validateLengthNotNull($this->name, 'Nimi');
+        return $errors;
+    }
+
+    public function validateAuthor() {
+        $errors[] = parent::validateLengthNotNull($this->author, 'Kirjailija');
+        return $errors;
+    }
+
+    public function validatePublishyear() {
+        $errors[] = parent::validateInteger($this->publishyear, 'Julkaisuvuosi');
+        return $errors;
+    }
+
+    public function validatePages() {
+        $errors[] = parent::validateInteger($this->pages, 'Sivumäärä');
+        return $errors;
     }
 
 }
