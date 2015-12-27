@@ -36,8 +36,12 @@ class BookController extends BaseController {
             'description'=> $params['description']
         ));
         
-        $book->save();
+        $errors = $book->errors();
         
+        if (count($errors) == 0) {
+        $book->save();
         Redirect::to('/allbooks/' . $book->id, array('message' => 'Kirja on lisätty listalle!'));
+        }
+        //tee redirect jos on erroreita
     }
 }
