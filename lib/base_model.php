@@ -22,6 +22,7 @@
       foreach($this->validators as $validator){
         // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
           $errors = array_merge($errors, $this->{$validator}());
+//          $errors[] = $this->{$validator}(); //we would use this, if errors weren't arrays, but strings only
           
       }
 
@@ -31,15 +32,17 @@
     public function validateLengthNotNull($string, $field) {
         if($string == '' || $string == null) {
             $error = $field . ' ei saa olla tyhjä';
+            return $error;
         }
         
-        return $error;
+        
     }
     
     public function validateInteger($number, $field) {
-        if(is_int($number)) {
-            return $error = $field . ' kentän arvo pitää olla kokonaisluku';
+        if(!(is_numeric($number))) {
+            $error = $field . ' kentän arvo pitää olla kokonaisluku';
+            return $error;
         }
-        return $error;
+        
     }
   }
