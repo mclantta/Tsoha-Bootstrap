@@ -28,20 +28,29 @@ class BookController extends BaseController {
     public static function store() {
         $params = filter_input_array(INPUT_POST); //katso toimiiko
 
-        $book = new Book(array(
+        $attributes = array(
             'name' => $params['name'],
             'author' => $params['author'],
             'publishyear' => $params['publishyear'],
             'pages'=> $params['pages'],
             'description'=> $params['description']
-        ));
-        
+        );
+        $book = new Book($attributes);
         $errors = $book->errors();
         
-        if (count($errors) == 0) {
+        $count = 0;
+        foreach($errors as $error) {
+        if ($error != NULL) {
+            $count = 1;
+        }
+        }
+        if ($count == 0) { 
         $book->save();
         Redirect::to('/allbooks/' . $book->id, array('message' => 'Kirja on lisätty listalle!'));
+        } else {
+        
+            View::make('/book/add_new.html', array('errors' => $errors, 'attributes' => $attributes));
         }
-        //tee redirect jos on erroreita
+        
     }
 }

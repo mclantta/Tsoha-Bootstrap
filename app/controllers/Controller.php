@@ -10,10 +10,10 @@
 
     public static function sandbox(){
       $jee = new Book(array(
-          'name' => '',
-          'author' => '',
-          'publishyear' => 'jeee',
-          'pages' => 'hahae'
+          'name' => 'Jee',
+          'author' => 'Maija',
+          'publishyear' => '1999',
+          'pages' => '230'
       ));  
       
       $errors = $jee->errors();

@@ -3,26 +3,39 @@
 
 <h1>Uuden kirjan lisäys</h1>
 
+{% for error in errors %}
+{% if error is not null %}
+<div class="alert alert-danger">
+    
+    <ul>
+        <li>{{error}}</li>
+    </ul>
+    
+</div>
+{% endif %}
+{% endfor %}
+
+
 <form method="post" action="{{base_path}}/allbooks">
     <div class="form-group">
         <label>Nimi</label>
-        <input name="name" class="form-control" type="text">
+        <input name="name" class="form-control" value="{{attributes.name}}" type="text">
     </div>
     <div class="form-group">
         <label>Kirjailija</label>
-        <input name="author" class="form-control" type="text">
+        <input name="author" class="form-control" value="{{attributes.author}}" type="text">
     </div>
     <div class="form-group">
         <label>Julkaisuvuosi</label>
-        <input name="publishyear" class="form-control" type="text">
+        <input name="publishyear" class="form-control" value="{{attributes.publishyear}}" type="text">
     </div>
     <div class="form-group">
         <label>Sivumäärä</label>
-        <input name="pages" class="form-control" type="text">
+        <input name="pages" class="form-control" value="{{attributes.pages}}" type="text">
     </div>
     <div class="form-group">
         <label>Esittely</label>
-        <textarea name="description" class="form-control" rows="3"></textarea>
+        <textarea name="description" class="form-control" rows="3">{{attributes.description}}</textarea>
     </div>
 
     <div class="form-group">
