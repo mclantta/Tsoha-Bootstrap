@@ -38,3 +38,9 @@ $routes->get('/allbooks/:id', function($id) {
     BookController::gettingDetails($id);
 });
 
+$routes->get('/allbooks/:id/edit', function($id) {
+    BookController::showEditForm($id);
+});
+$routes->post('/allbooks/:id/edit', function($id) {
+    BookController::updateBook($id);
+});

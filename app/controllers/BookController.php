@@ -20,37 +20,74 @@ class BookController extends BaseController {
         $book = Book::findOne($id);
         View::make('book/book_details.html', array('book' => $book));
     }
-    
+
     public static function create() {
         View::make('book/add_new.html');
     }
 
     public static function store() {
-        $params = filter_input_array(INPUT_POST); //katso toimiiko
+        $params = filter_input_array(INPUT_POST);
 
         $attributes = array(
             'name' => $params['name'],
             'author' => $params['author'],
             'publishyear' => $params['publishyear'],
-            'pages'=> $params['pages'],
-            'description'=> $params['description']
+            'pages' => $params['pages'],
+            'description' => $params['description']
         );
         $book = new Book($attributes);
         $errors = $book->errors();
         
+        //make this boolean method
         $count = 0;
-        foreach($errors as $error) {
-        if ($error != NULL) {
-            $count = 1;
-        }
-        }
-        if ($count == 0) { 
-        $book->save();
-        Redirect::to('/allbooks/' . $book->id, array('message' => 'Kirja on lisätty listalle!'));
+        foreach ($errors as $error) {
+            if ($error != NULL) {
+                $count = 1;
+            }
+        } 
+        if ($count == 0) {
+            $book->save();
+            Redirect::to('/allbooks/' . $book->id, array('message' => 'Kirja on lisätty listalle!'));
         } else {
-        
+
             View::make('/book/add_new.html', array('errors' => $errors, 'attributes' => $attributes));
         }
+    }
+
+    public static function showEditForm($id) {
+        $book = Book::findOne($id);
+        View::make('book/edit_book.html', array('attributes' => $book));
+    }
+
+ 
+    public static function updateBook($id) {
+        $params = filter_input_array(INPUT_POST);
         
+        $attributes = array(
+            'id' => $id,
+            'name' => $params['name'],
+            'author' => $params['author'],
+            'publishyear' => $params['publishyear'],
+            'pages' => $params['pages'],
+            'description' => $params['description']
+        );
+        
+        $book = new Book($attributes);
+        $errors = $book->errors();
+        
+        //make this boolean method
+        $count = 0;
+        foreach ($errors as $error) {
+            if ($error != NULL) {
+                $count = 1;
+            }
+        }
+        if ($count == 1) {
+            View::make('book/edit_book.html', array('errors' => $errors, 'attributes' => $attributes));
+        } else {
+            $book->update();
+            Redirect::to('/allbooks/' . $book->id, array('message' => 'Kirjaa on muokattu onnistuneesti!'));
+        }
     }
 }
+    
