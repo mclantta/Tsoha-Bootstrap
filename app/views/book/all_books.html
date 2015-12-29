@@ -1,5 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
+
+{% if message is not null%}
+<div class="alert alert-success">
+    
+    <ul>
+        <li>{{message}}</li>
+    </ul>
+    
+</div>
+{% endif %}
+
 <h1>Kaikki tietokannan kirjat</h1>
 
 <table class="table table-striped">

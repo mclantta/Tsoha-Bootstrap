@@ -78,7 +78,7 @@ class BookController extends BaseController {
         $book = new Book(array('id' => $id));
         
         $book->destroy();
-        Redirect::to('/allbooks', array('message' => 'Peli on poistettu onnistuneesti!'));
+        Redirect::to('/allbooks', array('message' => 'Kirja on poistettu onnistuneesti!'));
     }
 
 }
