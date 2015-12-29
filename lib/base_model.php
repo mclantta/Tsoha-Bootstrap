@@ -23,8 +23,9 @@ class BaseModel {
         foreach ($this->validators as $validator) {
             // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
 //          $errors = array_merge($errors, $this->{$validator}()); //this, if errors are arrays
+            if (($this->{$validator}()) != NULL) {
                 $errors[] = $this->{$validator}(); //we would use this, if errors weren't arrays, but strings only
-                
+            }   
         }
 
         return $errors;

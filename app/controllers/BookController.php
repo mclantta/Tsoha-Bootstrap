@@ -38,20 +38,13 @@ class BookController extends BaseController {
         $book = new Book($attributes);
         $errors = $book->errors();
         
-        //make this boolean method
-        $count = 0;
-        foreach ($errors as $error) {
-            if ($error != NULL) {
-                $count = 1;
-            }
-        } 
-        if ($count == 0) {
+        if (count($errors) == 0) {
             $book->save();
             Redirect::to('/allbooks/' . $book->id, array('message' => 'Kirja on lisätty listalle!'));
         } else {
-
             View::make('/book/add_new.html', array('errors' => $errors, 'attributes' => $attributes));
         }
+        
     }
 
     public static function showEditForm($id) {
@@ -74,19 +67,13 @@ class BookController extends BaseController {
         
         $book = new Book($attributes);
         $errors = $book->errors();
-        
-        //make this boolean method
-        $count = 0;
-        foreach ($errors as $error) {
-            if ($error != NULL) {
-                $count = 1;
-            }
-        }
-        if ($count == 1) {
-            View::make('book/edit_book.html', array('errors' => $errors, 'attributes' => $attributes));
-        } else {
+       
+        if (count($errors) == 0) {
             $book->update();
             Redirect::to('/allbooks/' . $book->id, array('message' => 'Kirjaa on muokattu onnistuneesti!'));
+            
+        } else {
+            View::make('book/edit_book.html', array('errors' => $errors, 'attributes' => $attributes));
         }
     }
 }
