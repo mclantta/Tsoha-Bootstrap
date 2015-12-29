@@ -1,20 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "macros/alerts.html" as alerts %}
 
 <h1>Muokkaa kirjaa: {{attributes.name}}</h1>
 
-{% for error in errors %}
-{% if error is not null %}
-<div class="alert alert-danger">
-    
-    <ul>
-        <li>{{error}}</li>
-    </ul>
-    
-</div>
-{% endif %}
-{% endfor %}
-
+{{alerts.message_failure("#{errors}")}}
 
 <form method="post" action="{{base_path}}/allbooks/{{attributes.id}}/edit">
     <div class="form-group">

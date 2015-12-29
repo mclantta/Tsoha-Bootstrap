@@ -1,15 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "macros/alerts.html" as alerts %}
 
-{% if message is not null%}
-<div class="alert alert-success">
-    
-    <ul>
-        <li>{{message}}</li>
-    </ul>
-    
-</div>
-{% endif %}
+{{alerts.message_success("#{message}")}}
 
 <h1>{{book.name}}</h1>
 

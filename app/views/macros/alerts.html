@@ -1,0 +1,31 @@
+<!--1. macro -->
+{% macro message_success(messag) %}
+
+{% if messag is not null%}
+<div class="alert alert-success">
+    
+    <ul>
+        <li>{{messag}}</li>
+    </ul>
+    
+</div>
+{% endif %}
+
+{% endmacro %}
+
+<!--2. makro -->
+{% macro message_failure(errors) %}
+
+{% for error in errors %}
+{% if error is not null %}
+<div class="alert alert-danger">
+    
+    <ul>
+        <li>{{error}}</li>
+    </ul>
+    
+</div>
+{% endif %}
+{% endfor %}
+
+{% endmacro %}
