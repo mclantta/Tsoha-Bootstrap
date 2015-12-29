@@ -44,3 +44,6 @@ $routes->get('/allbooks/:id/edit', function($id) {
 $routes->post('/allbooks/:id/edit', function($id) {
     BookController::updateBook($id);
 });
+$routes->post('/allbooks/:id/delete', function($id) {
+    BookController::deleteBook($id);
+});

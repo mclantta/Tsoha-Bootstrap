@@ -54,12 +54,15 @@ class Book extends BaseModel {
         if ($this->publishyear == NULL && $this->pages == NULL) {
             $query = DB::connection()->prepare('INSERT INTO Book (name, author, description) VALUES (:name, :author, :description) RETURNING id');
             $query->execute(array('name' => $this->name, 'author' => $this->author, 'description' => $this->description));
+            
         } else if ($this->publishyear == NULL) {
             $query = DB::connection()->prepare('INSERT INTO Book (name, author, pages, description) VALUES (:name, :author, :pages, :description) RETURNING id');
             $query->execute(array('name' => $this->name, 'author' => $this->author, 'pages' => $this->pages, 'description' => $this->description));
+            
         } else if ($this->pages == NULL) {
             $query = DB::connection()->prepare('INSERT INTO Book (name, author, publishyear, description) VALUES (:name, :author, :publishyear, :description) RETURNING id');
             $query->execute(array('name' => $this->name, 'author' => $this->author, 'publishyear' => $this->publishyear, 'description' => $this->description));
+            
         } else {
             $query = DB::connection()->prepare('INSERT INTO Book (name, author, publishyear, pages, description) VALUES (:name, :author, :publishyear, :pages, :description) RETURNING id');
             $query->execute(array('name' => $this->name, 'author' => $this->author, 'publishyear' => $this->publishyear, 'pages' => $this->pages, 'description' => $this->description));
@@ -124,4 +127,8 @@ class Book extends BaseModel {
         return $errors;
     }
 
+    public function destroy() {
+        $query =  DB::connection()->prepare('DELETE FROM Book WHERE id=:id');
+        $query->execute(array('id' => $this->id));
+    }
 }

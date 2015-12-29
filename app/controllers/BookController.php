@@ -37,14 +37,13 @@ class BookController extends BaseController {
         );
         $book = new Book($attributes);
         $errors = $book->errors();
-        
+
         if (count($errors) == 0) {
             $book->save();
             Redirect::to('/allbooks/' . $book->id, array('message' => 'Kirja on lisätty listalle!'));
         } else {
             View::make('/book/add_new.html', array('errors' => $errors, 'attributes' => $attributes));
         }
-        
     }
 
     public static function showEditForm($id) {
@@ -52,10 +51,9 @@ class BookController extends BaseController {
         View::make('book/edit_book.html', array('attributes' => $book));
     }
 
- 
     public static function updateBook($id) {
         $params = filter_input_array(INPUT_POST);
-        
+
         $attributes = array(
             'id' => $id,
             'name' => $params['name'],
@@ -64,17 +62,23 @@ class BookController extends BaseController {
             'pages' => $params['pages'],
             'description' => $params['description']
         );
-        
+
         $book = new Book($attributes);
         $errors = $book->errors();
-       
+
         if (count($errors) == 0) {
             $book->update();
             Redirect::to('/allbooks/' . $book->id, array('message' => 'Kirjaa on muokattu onnistuneesti!'));
-            
         } else {
             View::make('book/edit_book.html', array('errors' => $errors, 'attributes' => $attributes));
         }
     }
+
+    public static function deleteBook($id) {
+        $book = new Book(array('id' => $id));
+        
+        $book->destroy();
+        Redirect::to('/allbooks', array('message' => 'Peli on poistettu onnistuneesti!'));
+    }
+
 }
-    
