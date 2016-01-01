@@ -96,9 +96,7 @@ class Book extends BaseModel {
         SET name=:name, author=:author, publishyear=:publishyear, pages=:pages, description=:description
         WHERE id=:id');
             $query->execute(array('id' => $this->id, 'name' => $this->name, 'author' => $this->author, 'publishyear' => $this->publishyear, 'pages' => $this->pages, 'description' => $this->description));
-        }
-        
-        
+        }        
 //ilman validointia...
 //        $query = DB::connection()->prepare('UPDATE Book
 //        SET name=:name, author=:author, publishyear=:publishyear, pages=:pages, description=:description

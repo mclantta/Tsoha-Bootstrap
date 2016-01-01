@@ -1,6 +1,6 @@
 <?php
-    
-   
+//require 'app/models/Reader.php';
+
   class Controller extends BaseController{
 
     public static function index(){
@@ -36,10 +36,6 @@
     
     public static function edit(){
         View::make('suunnitelmat/edit_user_book_info.html');
-    }
-    
-    public static function login(){
-        View::make('suunnitelmat/login.html');
     }
     public static function signin(){
         View::make('suunnitelmat/singin.html');

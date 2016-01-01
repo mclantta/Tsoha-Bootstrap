@@ -15,9 +15,6 @@ $routes->get('/edit-user-book/1', function() {
     Controller::edit();
 });
 
-$routes->get('/login', function() {
-    Controller::login();
-});
 $routes->get('/signin', function() {
     Controller::signin();
 });
@@ -46,4 +43,10 @@ $routes->post('/allbooks/:id/edit', function($id) {
 });
 $routes->post('/allbooks/:id/delete', function($id) {
     BookController::deleteBook($id);
+});
+$routes->get('/login', function() {
+    ReaderController::login();
+});
+$routes->post('/login', function() {
+    ReaderController::handleLogin();
 });
