@@ -21,8 +21,14 @@
 {% endif %}
 
 <!--Working delete-button, but we do not want to give everyone access to use it -->
-<!-- <form method="post" action="{{base_path}}/allbooks/{{book.id}}/delete" style="display: inline-block;">
-  <button type="submit" class="btn btn-danger">Poista</button>
-</form> -->
+{% if is_admin %}
+<form method="post" action="{{base_path}}/allbooks/{{book.id}}/delete" style="display: inline-block;">
+    <button type="submit" class="btn btn-danger btn-sm">Poista</button>
+</form>
+
+<form action="{{base_path}}/allbooks/{{book.id}}/edit" style="display: inline-block;">
+    <button type="submit" class="btn btn-info btn-sm">Muokkaa</button>
+</form>
+{% endif %}
 
 {% endblock %}

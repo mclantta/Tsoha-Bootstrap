@@ -14,6 +14,16 @@
 
 {{alerts.message_success("#{message}")}}
 
+{% if is_admin %}
+<div class="alert alert-info">
+
+    <p>Olet kirjautunut admin-käyttäjänä. Voit muokata ja poistaa kirjoja niiden esittelysivuilla, jonne pääset klikkaamalla kirjan nimeä.</p>
+
+</div>
+
+{% endif %}
+
+
 <h3>Oletko jo lukenut nämä?</h3>
 <p>Tai tarkastele koko listaa: <a href="http://mclantta.users.cs.helsinki.fi/tsohaa/allbooks">Kaikki kirjat</a></p>
 

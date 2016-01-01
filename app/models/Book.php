@@ -48,7 +48,7 @@ class Book extends BaseModel {
         return $book;
     }
 
-    //method should work, but looks bad... make better later
+    //method works, but looks bad... make better later
     public function save() {
 
         if ($this->publishyear == NULL && $this->pages == NULL) {
@@ -72,7 +72,7 @@ class Book extends BaseModel {
         $this->id = $row['id'];
     }
 
-    public function update() { //not completed... same problem than above
+    public function update() { // same problem than above
         if ($this->publishyear == NULL && $this->pages == NULL) {
             $query = DB::connection()->prepare('UPDATE Book
         SET name=:name, author=:author, description=:description

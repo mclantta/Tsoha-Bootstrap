@@ -15,8 +15,17 @@
 
         // Asetetaan näkymään kirjautunut käyttäjä, jos get_user_logged_in-metodi on toteutettu
         if(method_exists('BaseController', 'get_user_logged_in')){
-          $content['user_logged_in'] = BaseController::get_user_logged_in();
+          $user = BaseController::get_user_logged_in();
+          $content['user_logged_in'] = $user;
+            if($user->id == 1) {
+                $content['is_admin'] = $user;
+            }
         }
+        //alkuperäinen...
+//        if(method_exists('BaseController', 'get_user_logged_in')){
+//          $content['user_logged_in'] = BaseController::get_user_logged_in();
+//        }
+        
 
         // Tulostetaan Twig:n renderöimä näkymä
         echo $twig->render($view, $content);

@@ -9,7 +9,7 @@ class Reader extends BaseModel {
     }
 
     public static function authenticate($name, $password) {
-        //does this work, or do we need these: "" ??
+        
         $query = DB::connection()->prepare('SELECT * FROM Reader WHERE name=:name AND password=:password LIMIT 1');
         $query->execute(array('name' => $name, 'password' => $password));
 
