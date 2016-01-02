@@ -11,6 +11,16 @@
 </div>
 {% endif %}
 
+{% if message is not null%}
+<div class="alert alert-danger">
+    
+    <ul>
+        <li>{{message}}</li>
+    </ul>
+    
+</div>
+{% endif %}
+
 <h1>Kirjaudu sisään</h1>
 
 <form method="post" action="{{base_path}}/login">

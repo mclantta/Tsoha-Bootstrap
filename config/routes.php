@@ -52,7 +52,7 @@ $routes->get('/allbooks/:id/edit', 'check_admin_logged', function($id) {
 $routes->post('/allbooks/:id/edit', function($id) {
     BookController::updateBook($id);
 });
-$routes->post('/allbooks/:id/delete', 'check_admin_logged', function($id) { // do later
+$routes->post('/allbooks/:id/delete', 'check_admin_logged', function($id) {
     BookController::deleteBook($id);
 });
 $routes->get('/login', function() {
