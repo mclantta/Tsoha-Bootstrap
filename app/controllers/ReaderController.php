@@ -27,15 +27,16 @@ class ReaderController extends BaseController {
 
     public static function readersList() {
         $reader = self::get_user_logged_in();
-        //$books = jokumetodi () joka hakee tietokannasta oikeita kirjoja...
+        $books = Reader::findUserBooks($reader->id);
         
-        View::make('reader/own_books.html', array('reader' => $reader));
+        View::make('reader/own_books.html', array('reader' => $reader, 'books' => $books));
     }
     public static function addBookToUser($id) { 
         $reader = self::get_user_logged_in();
         
         Reader::addBook($id, $reader->id);
-        View::make('reader/own_books.html', array('reader' => $reader, 'message' => 'Kirja lisätty listalle onnistuneesti!'));
+        $books = Reader::findUserBooks($reader->id);
+        View::make('reader/own_books.html', array('reader' => $reader, 'message' => 'Kirja lisätty listalle onnistuneesti!', 'books' => $books));
     }
 
 }

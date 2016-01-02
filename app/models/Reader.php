@@ -43,14 +43,45 @@ class Reader extends BaseModel {
         return $reader;
     }
 
-    public static function addBook($id, $readerId) {
+    public static function findListsId($readerId) {
         $query1 = DB::connection()->prepare('SELECT * FROM List WHERE reader_id=:readerId');
         $query1->execute(array('readerId' => $readerId));
         $row = $query1->fetch();
 
+        if ($row) {
+            return $row['id'];
+        }
+        return NULL;
+    }
+
+    public static function addBook($id, $readerId) {
+        $listId = self::findListsId($readerId);
 
         $query2 = DB::connection()->prepare('INSERT INTO Booklist (list_id, book_id) VALUES (:list_id, :book_id)');
-        $query2->execute(array('list_id' => $row['id'], 'book_id' => $id));
+        $query2->execute(array('list_id' => $listId, 'book_id' => $id));
+    }
+
+    public static function findUserBooks($readerId) {
+        $listId = self::findListsId($readerId);
+
+        $query = DB::connection()->prepare('SELECT id, name, author, publishyear, pages, description FROM Book b INNER JOIN Booklist bl ON b.id=bl.book_id WHERE bl.list_id = :list_id');
+        $query->execute (array('list_id' => $listId));
+        
+        $rows = $query->fetchAll(); //kyselyn tuottamien rivien haku
+        $books = array();
+
+        foreach ($rows as $row) {
+
+            $books[] = new Book(array(
+                'id' => $row['id'],
+                'name' => $row['name'],
+                'author' => $row['author'],
+                'publishyear' => $row['publishyear'],
+                'pages' => $row['pages'],
+                'description' => $row['description']
+            ));
+        }
+        return $books;
     }
 
 }
