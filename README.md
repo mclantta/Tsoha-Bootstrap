@@ -1,11 +1,10 @@
 ﻿# Tietokantasovelluksen esittelysivu
 
+* [Linkki sovellukseeni](http://mclantta.users.cs.helsinki.fi/tsohaa/)
 
-* Kirjaudu sisään:
+Kirjaudu sisään:
 	* Admin käyttäjä: Admin Admin
 	* Normaali käyttäjä: Testi Testinen
-
-* [Linkki sovellukseeni](http://mclantta.users.cs.helsinki.fi/tsohaa/)
 
 * [Linkki dokumentaatiooni](https://github.com/mclantta/Tsoha-Bootstrap/blob/master/doc/kirjalista-sovellus.pdf)
 
