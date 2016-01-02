@@ -6,11 +6,14 @@ class BaseController {
 
         if (isset($_SESSION['user'])) {
             $user_id = $_SESSION['user'];
-            $user = Reader::findOne($user_id);
-
-            return $user;
+            
+            if($user_id != 1) {
+                $user = Reader::findOne($user_id);
+                return $user;
+            }
+            return NULL;
         }
-        return null;
+        return NULL;
     }
     public static function get_admin_logged_in() {
         if (isset($_SESSION['user'])) {

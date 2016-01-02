@@ -15,7 +15,7 @@
 
         // Asetetaan näkymään kirjautunut käyttäjä, jos get_user_logged_in-metodi on toteutettu
         if(method_exists('BaseController', 'get_user_logged_in')){
-          $content['user_logged_in'] = BaseController::get_user_logged_in();
+          $content['is_user'] = BaseController::get_user_logged_in();
         }
         
         // Asetetaan näkymään admin käyttäjä, jos get_admin_logged_in-metodi on toteutettu
