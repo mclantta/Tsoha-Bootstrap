@@ -19,5 +19,9 @@ class ReaderController extends BaseController {
             Redirect::to('/', array('message' => 'Tervetuloa takaisin ' . $reader->name . '!'));
         }
     }
+    public static function logout(){
+        $_SESSION['user'] = null;
+        Redirect::to('/', array('message' => 'Olet kirjautunut ulos!'));
+    }
 
 }

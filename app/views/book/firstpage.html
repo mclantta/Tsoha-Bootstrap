@@ -2,7 +2,7 @@
 {% block content %}
 {% import "macros/alerts.html" as alerts %}
 
-{% if (not is_user) and (not is_admin) %}
+{% if not user_logged_in %}
 <h1>Tervetuloa Kirjalistaan</h1>
 
 <p>

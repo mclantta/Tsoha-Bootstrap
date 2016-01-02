@@ -1,14 +1,18 @@
 <?php
 
-function check_logged_in(){
-  BaseController::check_logged_in();
+function check_logged_in() {
+    BaseController::check_logged_in();
 }
-function check_admin_logged(){
-  BaseController::check_admin_logged();
+
+function check_admin_logged() {
+    BaseController::check_admin_logged();
 }
 
 $routes->get('/', function() {
     BookController::firstPageBooks();
+});
+$routes->post('/', function() {
+    ReaderController::logout();
 });
 
 $routes->get('/hiekkalaatikko', function() {
@@ -35,7 +39,7 @@ $routes->get('/userbook/1', function() {
 $routes->post('/allbooks', function() {
     BookController::store();
 });
-$routes->get('/allbooks/new', 'check_admin_logged', function() { 
+$routes->get('/allbooks/new', 'check_admin_logged', function() {
     BookController::create();
 });
 $routes->get('/allbooks/:id', function($id) {
