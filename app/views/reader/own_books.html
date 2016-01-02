@@ -1,23 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Käyttäjän Miisa kirjalista</h1>
+
+
+<h1>Käyttäjän {{reader.name}} luetut kirjat</h1>
+
 
 <table class="table table-striped">
     <thead>
         <tr>
             <th>Nimi</th>
             <th>Kirjailija</th>
-            <th>Status</th>
+            <th>1.painoksen julkaisuvuosi</th>
+            <th>Sivumäärä</th>
         </tr>
     </thead>
     
     <tbody>
+        {%for book in books%}
         <tr>
-            <td><a href="#">Ylpeys ja ennakkoluulo</a></td>
-            <td>Jane Austen</td>
-            <td><label class="label label-success">valmis</label></td>
-            <th><a class="btn btn-default btn-sm" href="#">Muokkaa</a></th>
+            <td><a href="{{base_path}}/allbooks/{{book.id}}">{{book.name}}</a></td>
+            <td>{{book.author}}</td>
+            <td>{{book.publishyear}}</td>
+            <td>{{book.pages}}</td> 
         </tr>
-    </tbody>
+        {% endfor %}
+    </tbody>  
 </table>
 {% endblock %}

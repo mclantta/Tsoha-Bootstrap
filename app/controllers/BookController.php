@@ -81,4 +81,6 @@ class BookController extends BaseController {
         Redirect::to('/allbooks', array('message' => 'Kirja on poistettu onnistuneesti!'));
     }
 
+    
+
 }

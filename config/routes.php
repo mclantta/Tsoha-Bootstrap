@@ -61,3 +61,6 @@ $routes->get('/login', function() {
 $routes->post('/login', function() {
     ReaderController::handleLogin();
 });
+$routes->get('/list', 'check_logged_in', function() {
+    ReaderController::readersList();
+});
