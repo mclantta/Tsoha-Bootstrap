@@ -9,8 +9,7 @@ CREATE TABLE Reader(
 
 CREATE TABLE List(
     id SERIAL PRIMARY KEY,
-    reader_id INTEGER REFERENCES Reader(id),
-    name varchar(100) NOT NULL
+    reader_id INTEGER REFERENCES Reader(id)
 );
 
 CREATE TABLE Book(

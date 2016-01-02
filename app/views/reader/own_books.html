@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% import "macros/alerts.html" as alerts %}
 
 <h1>Käyttäjän {{reader.name}} luetut kirjat</h1>
 
+{{alerts.message_success("#{message}")}}
 
 <table class="table table-striped">
     <thead>

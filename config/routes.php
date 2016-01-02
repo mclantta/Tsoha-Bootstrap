@@ -55,6 +55,10 @@ $routes->post('/allbooks/:id/edit', function($id) {
 $routes->post('/allbooks/:id/delete', 'check_admin_logged', function($id) {
     BookController::deleteBook($id);
 });
+$routes->post('/allbooks/:id/add', 'check_logged_in', function($id) {
+    ReaderController::addBookToUser($id);
+});
+
 $routes->get('/login', function() {
     ReaderController::login();
 });

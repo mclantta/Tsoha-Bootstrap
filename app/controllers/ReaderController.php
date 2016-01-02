@@ -31,5 +31,11 @@ class ReaderController extends BaseController {
         
         View::make('reader/own_books.html', array('reader' => $reader));
     }
+    public static function addBookToUser($id) { 
+        $reader = self::get_user_logged_in();
+        
+        Reader::addBook($id, $reader->id);
+        View::make('reader/own_books.html', array('reader' => $reader, 'message' => 'Kirja lisätty listalle onnistuneesti!'));
+    }
 
 }

@@ -31,4 +31,10 @@
 </form>
 {% endif %}
 
+{% if is_user %}
+<form method="post" action="{{base_path}}/allbooks/{{book.id}}/add" style="display: inline-block;">
+    <button type="submit" class="btn btn-danger btn-sm">Lisää omalle listalle</button>
+</form>
+{% endif %}
+
 {% endblock %}
