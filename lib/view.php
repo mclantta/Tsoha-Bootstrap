@@ -23,6 +23,7 @@
 //                $content['is_user'] = $user;
 //            }
 //        }
+        //if not working, try doing changes to base_controller instead
        if(method_exists('BaseController', 'get_user_logged_in')){
            if (BaseController::get_user_logged_in()->id == 1) {
                $content['is_admin'] = BaseController::get_user_logged_in();

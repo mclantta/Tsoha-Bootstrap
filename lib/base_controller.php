@@ -14,8 +14,18 @@ class BaseController {
     }
 
     public static function check_logged_in() {
-        // Toteuta kirjautumisen tarkistus tähän.
-        // Jos käyttäjä ei ole kirjautunut sisään, ohjaa hänet toiselle sivulle (esim. kirjautumissivulle).
+        if (!isset($_SESSION['user'])) {
+            Redirect::to('/login', array('message' => 'Kirjaudu ensin sisään!'));
+        }
+    }
+    public static function check_admin_logged() {
+        if (isset($_SESSION['user'])) {
+            $user_id = $_SESSION['user'];
+            
+            if ($user_id != 1) {
+                Redirect::to('/', array('message' => 'Sinut uudelleenohjattiin etusivulle!'));
+            }
+        }
     }
 
 }

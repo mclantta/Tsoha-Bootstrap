@@ -6,6 +6,12 @@
 
 <h1>Kaikki tietokannan kirjat</h1>
 
+{% if is_admin %}
+<form action="{{base_path}}/allbooks/new" style="display: inline-block;">
+    <button type="submit" class="btn btn-success">Lisää kirja tietokantaan</button>
+</form>
+{% endif %}
+
 <table class="table table-striped">
     <thead>
         <tr>
