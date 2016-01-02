@@ -2,7 +2,7 @@
 {% block content %}
 {% import "macros/alerts.html" as alerts %}
 
-{% if message is null %}
+{% if (not is_user) and (not is_admin) %}
 <h1>Tervetuloa Kirjalistaan</h1>
 
 <p>

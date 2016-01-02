@@ -44,8 +44,9 @@ class Book extends BaseModel {
                 'pages' => $row['pages'],
                 'description' => $row['description']
             ));
+            return $book;
         }
-        return $book;
+        return NULL;
     }
 
     //method works, but looks bad... make better later
@@ -54,15 +55,12 @@ class Book extends BaseModel {
         if ($this->publishyear == NULL && $this->pages == NULL) {
             $query = DB::connection()->prepare('INSERT INTO Book (name, author, description) VALUES (:name, :author, :description) RETURNING id');
             $query->execute(array('name' => $this->name, 'author' => $this->author, 'description' => $this->description));
-            
         } else if ($this->publishyear == NULL) {
             $query = DB::connection()->prepare('INSERT INTO Book (name, author, pages, description) VALUES (:name, :author, :pages, :description) RETURNING id');
             $query->execute(array('name' => $this->name, 'author' => $this->author, 'pages' => $this->pages, 'description' => $this->description));
-            
         } else if ($this->pages == NULL) {
             $query = DB::connection()->prepare('INSERT INTO Book (name, author, publishyear, description) VALUES (:name, :author, :publishyear, :description) RETURNING id');
             $query->execute(array('name' => $this->name, 'author' => $this->author, 'publishyear' => $this->publishyear, 'description' => $this->description));
-            
         } else {
             $query = DB::connection()->prepare('INSERT INTO Book (name, author, publishyear, pages, description) VALUES (:name, :author, :publishyear, :pages, :description) RETURNING id');
             $query->execute(array('name' => $this->name, 'author' => $this->author, 'publishyear' => $this->publishyear, 'pages' => $this->pages, 'description' => $this->description));
@@ -78,25 +76,22 @@ class Book extends BaseModel {
         SET name=:name, author=:author, description=:description
         WHERE id=:id');
             $query->execute(array('id' => $this->id, 'name' => $this->name, 'author' => $this->author, 'description' => $this->description));
-            
         } else if ($this->publishyear == NULL) {
             $query = DB::connection()->prepare('UPDATE Book
         SET name=:name, author=:author, pages=:pages, description=:description
         WHERE id=:id');
             $query->execute(array('id' => $this->id, 'name' => $this->name, 'author' => $this->author, 'pages' => $this->pages, 'description' => $this->description));
-            
         } else if ($this->pages == NULL) {
             $query = DB::connection()->prepare('UPDATE Book
         SET name=:name, author=:author, publishyear=:publishyear, description=:description
         WHERE id=:id');
             $query->execute(array('id' => $this->id, 'name' => $this->name, 'author' => $this->author, 'publishyear' => $this->publishyear, 'description' => $this->description));
-            
         } else {
             $query = DB::connection()->prepare('UPDATE Book
         SET name=:name, author=:author, publishyear=:publishyear, pages=:pages, description=:description
         WHERE id=:id');
             $query->execute(array('id' => $this->id, 'name' => $this->name, 'author' => $this->author, 'publishyear' => $this->publishyear, 'pages' => $this->pages, 'description' => $this->description));
-        }        
+        }
 //ilman validointia...
 //        $query = DB::connection()->prepare('UPDATE Book
 //        SET name=:name, author=:author, publishyear=:publishyear, pages=:pages, description=:description
@@ -126,7 +121,8 @@ class Book extends BaseModel {
     }
 
     public function destroy() {
-        $query =  DB::connection()->prepare('DELETE FROM Book WHERE id=:id');
+        $query = DB::connection()->prepare('DELETE FROM Book WHERE id=:id');
         $query->execute(array('id' => $this->id));
     }
+
 }

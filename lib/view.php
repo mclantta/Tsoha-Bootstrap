@@ -14,14 +14,24 @@
         $content['base_path'] = BASE_PATH;
 
         // Asetetaan näkymään kirjautunut käyttäjä, jos get_user_logged_in-metodi on toteutettu
-        if(method_exists('BaseController', 'get_user_logged_in')){
-          $user = BaseController::get_user_logged_in();
-          $content['user_logged_in'] = $user;
-            if($user->id == 1) {
-                $content['is_admin'] = $user;
-            }
-        }
-        //alkuperäinen...
+        // aiheutti virheen aiemmin...
+//        if(method_exists('BaseController', 'get_user_logged_in')){
+//          $user = BaseController::get_user_logged_in();
+//            if($user->id == 1) {
+//                $content['is_admin'] = $user;
+//            } else {
+//                $content['is_user'] = $user;
+//            }
+//        }
+       if(method_exists('BaseController', 'get_user_logged_in')){
+           if (BaseController::get_user_logged_in()->id == 1) {
+               $content['is_admin'] = BaseController::get_user_logged_in();
+           } else {
+               $content['is_user'] = BaseController::get_user_logged_in();
+           }
+        } 
+//        
+       // alkuperäinen...
 //        if(method_exists('BaseController', 'get_user_logged_in')){
 //          $content['user_logged_in'] = BaseController::get_user_logged_in();
 //        }
