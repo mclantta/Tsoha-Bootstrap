@@ -1,12 +1,11 @@
 ﻿# Tietokantasovelluksen esittelysivu
 
-Linkkejä tällä hetkellä tärkeimpiin sivuihin, osassa on jo toiminallisuutta:
+
+* Kirjaudu sisään:
+	* Admin käyttäjä: Admin Admin
+	* Normaali käyttäjä: Testi Testinen
 
 * [Linkki sovellukseeni](http://mclantta.users.cs.helsinki.fi/tsohaa/)
-	* [käyttäjän kirjalista](http://mclantta.users.cs.helsinki.fi/tsohaa/userlist)
-	* [Yksittäisen kirjan tarkempi näkymä](http://mclantta.users.cs.helsinki.fi/tsohaa/allbooks/1)
-	* [Uuden kirjan lisäyslomake koko tietokantaan: lomake toimii, ja validointi semi kunnossa](http://mclantta.users.cs.helsinki.fi/tsohaa/allbooks/new)
-	* [Kaikkien kirjojen listaussivu, joka on eri kuin etusivu](http://mclantta.users.cs.helsinki.fi/tsohaa/allbooks)
 
 * [Linkki dokumentaatiooni](https://github.com/mclantta/Tsoha-Bootstrap/blob/master/doc/kirjalista-sovellus.pdf)
 
