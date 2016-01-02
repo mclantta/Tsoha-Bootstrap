@@ -2,7 +2,7 @@
 
 * [Linkki sovellukseeni](http://mclantta.users.cs.helsinki.fi/tsohaa/)
 
-Kirjaudu sisään:
+* Kirjaudu sisään:
 	* Admin käyttäjä: Admin Admin
 	* Normaali käyttäjä: Testi Testinen
 
