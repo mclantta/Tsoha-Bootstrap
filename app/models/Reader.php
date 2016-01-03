@@ -139,5 +139,11 @@ class Reader extends BaseModel {
             return $errors;
         } 
     }
+    public function passwordFieldsAreSame($field) {
+        if ($field != $this->password) {
+            $oneError = ' Tarjoamasi salasana -kenttien merkkijonot eivät olleet samat. Kirjoita salasanat uudestaan.';
+            return $oneError;
+        }
+    }
 
 }

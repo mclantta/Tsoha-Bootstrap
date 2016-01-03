@@ -59,6 +59,12 @@ class ReaderController extends BaseController {
         
         $reader = new Reader($attributes);
         $errors = $reader->errors();
+        
+        //Let's check that user has entered the same password in both fields
+        $oneErr = $reader->passwordFieldsAreSame($params['again']);
+        if ($oneErr) {
+           $errors[] = $oneErr; 
+        }
 
         if (count($errors) == 0) {
             $reader->saveNewReader();
