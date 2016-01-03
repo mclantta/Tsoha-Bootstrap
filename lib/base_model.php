@@ -39,7 +39,7 @@ class BaseModel {
     }
 
     public function validateInteger($number, $field) {
-        if (!(is_numeric($number)) && $number != NULL) {
+        if (!(ctype_digit($number)) && $number != NULL) {
             $error = $field . ' kentän arvo pitää olla kokonaisluku';
             return $error;
         }
