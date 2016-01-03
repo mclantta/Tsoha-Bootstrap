@@ -27,6 +27,9 @@ class BookController extends BaseController {
                 $book = Book::findOne($id);
                 View::make('book/book_details.html', array('book' => $book, 'is_on_list' => $bool));
             }
+        } else if ($reader == NULL) {
+            $book = Book::findOne($id);
+            View::make('book/book_details.html', array('book' => $book));
         }
     }
 
