@@ -9,7 +9,7 @@ CREATE TABLE Reader(
 
 CREATE TABLE List(
     id SERIAL PRIMARY KEY,
-    reader_id INTEGER REFERENCES Reader(id)
+    reader_id INTEGER REFERENCES Reader(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Book(
@@ -22,6 +22,6 @@ CREATE TABLE Book(
 );
 
 CREATE TABLE Booklist(
-    list_id INTEGER REFERENCES List(id),
-    book_id INTEGER REFERENCES Book(id)
+    list_id INTEGER REFERENCES List(id) ON DELETE CASCADE,
+    book_id INTEGER REFERENCES Book(id) ON DELETE CASCADE
 );

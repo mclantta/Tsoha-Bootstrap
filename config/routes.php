@@ -49,7 +49,7 @@ $routes->get('/allbooks/:id', function($id) {
 $routes->get('/allbooks/:id/edit', 'check_admin_logged', function($id) {
     BookController::showEditForm($id);
 });
-$routes->post('/allbooks/:id/edit', function($id) {
+$routes->post('/allbooks/:id/edit', 'check_admin_logged', function($id) {
     BookController::updateBook($id);
 });
 $routes->post('/allbooks/:id/delete', 'check_admin_logged', function($id) {
