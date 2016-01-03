@@ -17,8 +17,17 @@ class BookController extends BaseController {
     }
 
     public static function gettingDetails($id) {
-        $book = Book::findOne($id);
-        View::make('book/book_details.html', array('book' => $book));
+        $reader = self::get_user_logged_in();
+        if ($reader != NULL) {
+            $bool = Reader::isBookUsers($reader->id, $id);
+            if ($bool == False) {
+                $book = Book::findOne($id);
+                View::make('book/book_details.html', array('book' => $book));
+            } else {
+                $book = Book::findOne($id);
+                View::make('book/book_details.html', array('book' => $book, 'is_on_list' => $bool));
+            }
+        }
     }
 
     public static function create() {
@@ -80,7 +89,5 @@ class BookController extends BaseController {
         $book->destroy();
         Redirect::to('/allbooks', array('message' => 'Kirja on poistettu onnistuneesti!'));
     }
-
-    
 
 }

@@ -31,9 +31,15 @@
 </form>
 {% endif %}
 
-{% if is_user %}
+{% if (is_user) and (not is_on_list) %}
 <form method="post" action="{{base_path}}/allbooks/{{book.id}}/add" style="display: inline-block;">
-    <button type="submit" class="btn btn-danger btn-sm">Lisää omalle listalle</button>
+    <button type="submit" class="btn btn-success btn-sm">Lisää omalle listalle</button>
+</form>
+{% endif %}
+
+{% if (is_user) and (is_on_list) %}
+<form action="#" style="display: inline-block;">
+    <button type="submit" class="btn btn-danger btn-sm">Poista omalta listalta</button>
 </form>
 {% endif %}
 

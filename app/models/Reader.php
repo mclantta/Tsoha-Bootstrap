@@ -83,5 +83,20 @@ class Reader extends BaseModel {
         }
         return $books;
     }
+    public static function isBookUsers($readerId, $bookId) {
+        $bool = False;
+        $listId = self::findListsId($readerId);
+        
+        $query = DB::connection()->prepare('SELECT * FROM Booklist WHERE list_id = :list_id AND book_id = :book_id');
+        $query->execute (array('list_id' => $listId, 'book_id' => $bookId));
+        
+        $rows = $query->fetchAll();
+        
+        if ($rows) {
+            $bool = True;
+        }
+        
+        return $bool;
+    }
 
 }
