@@ -27,4 +27,15 @@
         {% endfor %}
     </tbody>  
 </table>
+
+{% if not books %}
+<div class="alert alert-info">
+    
+    <ul>
+        <li>Sinulla ei ole vielä yhtään lisättyjä kirjoja!</li>
+    </ul>
+    
+</div>
+{% endif %}
+
 {% endblock %}
