@@ -2,9 +2,9 @@
 {% block content %}
 {% import "macros/alerts.html" as alerts %}
 
-{% if (not is_user) and (not is_admin) %}
-<h1>Tervetuloa Kirjalistaan</h1>
 
+<h1>Tervetuloa Kirjalistaan!</h1>
+{% if (not is_user) and (not is_admin) %}
 <p>
     Luodaksesi ja tarkastellaksesi omaa listaasi
     <a href="http://mclantta.users.cs.helsinki.fi/tsohaa/login"><button type="button" style="color:black">Kirjaudu</button></a>

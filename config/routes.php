@@ -1,7 +1,7 @@
 <?php
 
-function check_logged_in() {
-    BaseController::check_logged_in();
+function check_user_logged_in() {
+    BaseController::check_user_logged_in();
 }
 
 function check_admin_logged() {
@@ -55,7 +55,7 @@ $routes->post('/allbooks/:id/edit', function($id) {
 $routes->post('/allbooks/:id/delete', 'check_admin_logged', function($id) {
     BookController::deleteBook($id);
 });
-$routes->post('/allbooks/:id/add', 'check_logged_in', function($id) {
+$routes->post('/allbooks/:id/add', 'check_user_logged_in', function($id) {
     ReaderController::addBookToUser($id);
 });
 
@@ -65,6 +65,6 @@ $routes->get('/login', function() {
 $routes->post('/login', function() {
     ReaderController::handleLogin();
 });
-$routes->get('/list', 'check_logged_in', function() {
+$routes->get('/list', 'check_user_logged_in', function() {
     ReaderController::readersList();
 });
