@@ -28,6 +28,7 @@ class ReaderController extends BaseController {
     public static function readersList() {
         $reader = self::get_user_logged_in();
         $books = Reader::findUserBooks($reader->id);
+        sort($books);
         
         View::make('reader/own_books.html', array('reader' => $reader, 'books' => $books));
     }
@@ -45,4 +46,25 @@ class ReaderController extends BaseController {
         Redirect::to('/list', array('message' => 'Kirja on poistettu onnistuneesti!'));
     }
 
+    public static function showSignin() {
+        View::make('reader/signin.html');
+    }
+    public static function handleSignin() {
+        $params = filter_input_array(INPUT_POST);
+
+        $attributes = array(
+            'name' => $params['name'],
+            'password' => $params['password'],
+        );
+        
+        $reader = new Reader($attributes);
+        $errors = $reader->errors();
+
+        if (count($errors) == 0) {
+            $reader->saveNewReader();
+            Redirect::to('/', array('message' => 'Olet luonut käyttäjätunnuksen. Kirjaudu seuraavaksi sisään.'));
+        } else {
+            View::make('/reader/signin.html', array('errors' => $errors, 'attributes' => $attributes));
+        }
+    }
 }

@@ -19,9 +19,6 @@ $routes->get('/hiekkalaatikko', function() {
     Controller::sandbox();
 });
 
-$routes->get('/signin', function() {
-    Controller::signin();
-});
 $routes->get('/allbooks', function() { //
     BookController::listingBooks();
 });
@@ -60,4 +57,10 @@ $routes->get('/list', 'check_user_logged_in', function() { //
 });
 $routes->post('/allbooks/:id/remove', 'check_user_logged_in', function($id) {
     ReaderController::removeBookFromUser($id);
+});
+$routes->get('/signin', function() {
+    ReaderController::showSignin();
+});
+$routes->post('/signin', function() {
+    ReaderController::handleSignin();
 });

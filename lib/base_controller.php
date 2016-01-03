@@ -39,7 +39,7 @@ class BaseController {
                 Redirect::to('/', array('message' => 'Sinut uudelleenohjattiin etusivulle!'));
             }
         } else if (!isset($_SESSION['user'])) {
-            Redirect::to('/login', array('message' => 'Kirjaudu ensin sisään!')); //message does not show, this method still works..
+            Redirect::to('/login', array('message' => 'Kirjaudu ensin sisään!'));
         }
     }
 
@@ -51,8 +51,14 @@ class BaseController {
                 Redirect::to('/', array('message' => 'Sinut uudelleenohjattiin etusivulle!'));
             }
         } else if (!isset($_SESSION['user'])) {
-            Redirect::to('/login', array('message' => 'Kirjaudu ensin sisään!')); //message does not show, this method still works..
+            Redirect::to('/login', array('message' => 'Sinut uudelleenohjattiin kirjautumissivulle!'));
         }
     }
+
+//    public static function sort_books($books) {
+//
+//        
+//        
+//    }
 
 }

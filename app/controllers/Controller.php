@@ -23,8 +23,4 @@ class Controller extends BaseController {
         View::make('helloworld.html');
     }
 
-    public static function signin() {
-        View::make('suunnitelmat/singin.html');
-    }
-
 }

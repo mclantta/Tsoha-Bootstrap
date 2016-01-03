@@ -6,6 +6,7 @@ class Reader extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
+        $this->validators = array('validateName', 'validatePassword', 'validateNameNotInUse');
     }
 
     public static function authenticate($name, $password) {
@@ -105,6 +106,38 @@ class Reader extends BaseModel {
 
         $query = DB::connection()->prepare('DELETE FROM Booklist WHERE list_id=:list_id AND book_id = :book_id');
         $query->execute(array('list_id' => $listId, 'book_id' => $bookId));
+    }
+
+    public function saveNewReader() {
+        $query1 = DB::connection()->prepare('INSERT INTO Reader (name, password) VALUES (:name, :password) RETURNING id');
+        $query1->execute(array('name' => $this->name, 'password' => $this->password));
+        $row = $query1->fetch();
+
+        $this->id = $row['id'];
+
+        $query2 = DB::connection()->prepare('INSERT INTO List (reader_id) VALUES (:reader_id)');
+        $query2->execute(array('reader_id' => $this->id));
+    }
+
+    public function validateName() {
+        $errors = parent::validateLengthNotNull($this->name, 'Nimi');
+        return $errors;
+    }
+
+    public function validatePassword() {
+        $errors = parent::validateLengthNotNull($this->password, 'Salasana');
+        return $errors;
+    }
+
+    public function validateNameNotInUse() {
+        $query = DB::connection()->prepare('SELECT * FROM Reader WHERE name=:name');
+        $query->execute(array('name' => $this->name));
+        $row = $query->fetch();
+
+        if ($row) {
+            $errors = '"'. $this->name . '"' . ' -käyttäjänimi on jo käytössä. Valitse toinen nimi.';
+            return $errors;
+        } 
     }
 
 }

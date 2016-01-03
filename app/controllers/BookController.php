@@ -4,15 +4,17 @@ class BookController extends BaseController {
 
     public static function listingBooks() {
         $books = Book::all();
+//        self::sort_books($books);
         View::make('book/all_books.html', array('books' => $books));
     }
 
     public static function firstPageBooks() {
         //now this method searches all the books just like "listingBooks" -method,
         //but later on (when we have more books in the database), this method wants some
-        //subset of books (like every books that start with "s", or most favourite books or ...)
+        //subset of books (like every books that start with "s", or most favourite books or books selected by admin or...)
 
         $books = Book::all();
+//        self::sort_books($books);
         View::make('book/firstpage.html', array('books' => $books));
     }
 
