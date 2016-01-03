@@ -65,8 +65,8 @@ class Reader extends BaseModel {
         $listId = self::findListsId($readerId);
 
         $query = DB::connection()->prepare('SELECT id, name, author, publishyear, pages, description FROM Book b INNER JOIN Booklist bl ON b.id=bl.book_id WHERE bl.list_id = :list_id');
-        $query->execute (array('list_id' => $listId));
-        
+        $query->execute(array('list_id' => $listId));
+
         $rows = $query->fetchAll(); //kyselyn tuottamien rivien haku
         $books = array();
 
@@ -83,20 +83,28 @@ class Reader extends BaseModel {
         }
         return $books;
     }
+
     public static function isBookUsers($readerId, $bookId) {
         $bool = False;
         $listId = self::findListsId($readerId);
-        
+
         $query = DB::connection()->prepare('SELECT * FROM Booklist WHERE list_id = :list_id AND book_id = :book_id');
-        $query->execute (array('list_id' => $listId, 'book_id' => $bookId));
-        
+        $query->execute(array('list_id' => $listId, 'book_id' => $bookId));
+
         $rows = $query->fetchAll();
-        
+
         if ($rows) {
             $bool = True;
         }
-        
+
         return $bool;
+    }
+
+    public static function removeBook($bookId, $readerId) {
+        $listId = self::findListsId($readerId);
+
+        $query = DB::connection()->prepare('DELETE FROM Booklist WHERE list_id=:list_id AND book_id = :book_id');
+        $query->execute(array('list_id' => $listId, 'book_id' => $bookId));
     }
 
 }

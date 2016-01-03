@@ -38,7 +38,7 @@
 {% endif %}
 
 {% if (is_user) and (is_on_list) %}
-<form action="#" style="display: inline-block;">
+<form method="post" action="{{base_path}}/allbooks/{{book.id}}/remove" style="display: inline-block;">
     <button type="submit" class="btn btn-danger btn-sm">Poista omalta listalta</button>
 </form>
 {% endif %}

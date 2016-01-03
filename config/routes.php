@@ -68,3 +68,6 @@ $routes->post('/login', function() {
 $routes->get('/list', 'check_user_logged_in', function() {
     ReaderController::readersList();
 });
+$routes->post('/allbooks/:id/remove', 'check_user_logged_in', function($id) {
+    ReaderController::removeBookFromUser($id);
+});

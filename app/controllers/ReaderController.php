@@ -38,5 +38,11 @@ class ReaderController extends BaseController {
         $books = Reader::findUserBooks($reader->id);
         View::make('reader/own_books.html', array('reader' => $reader, 'message' => 'Kirja lisätty listalle onnistuneesti!', 'books' => $books));
     }
+    public static function removeBookFromUser($id) {
+        $reader = self::get_user_logged_in();
+        
+        Reader::removeBook($id, $reader->id);
+        Redirect::to('/list', array('message' => 'Kirja on poistettu onnistuneesti!'));
+    }
 
 }
