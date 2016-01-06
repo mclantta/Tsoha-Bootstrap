@@ -6,7 +6,7 @@ class Reader extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validateName', 'validatePassword', 'validateNameNotInUse');
+        $this->validators = array('validateName', 'validatePassword', 'validateNameNotInUse', 'validateNameRightLength');
     }
 
     public static function authenticate($name, $password) {
@@ -144,6 +144,10 @@ class Reader extends BaseModel {
             $oneError = ' Tarjoamasi salasana -kenttien merkkijonot eivät olleet samat. Kirjoita salasanat uudestaan.';
             return $oneError;
         }
+    }
+    public function validateNameRightLength() {
+        $errors = parent::validateLengthNotTooMuch($this->name, 30);
+        return $errors;
     }
 
 }

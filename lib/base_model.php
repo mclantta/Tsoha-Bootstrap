@@ -45,7 +45,12 @@ class BaseModel {
         }
     }
     public function validateLengthNotTooMuch($string, $maxLength) {
+        $length = strlen($string);
         
+        if ($length > $maxLength) {
+            $error = 'Liian pitkä merkkijono';
+            return $error;
+        }
     }
 
 }
