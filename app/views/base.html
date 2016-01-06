@@ -37,10 +37,13 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="navigation">
+                    {% if (not is_user) and (not is_admin) %}
                     <ul class="nav navbar-nav">
-                        <!-- Navigaation linkit -->
-                        <li><a href="{{base_path}}">Etusivu</a></li>        
+                        <li><a href="{{base_path}}/allbooks">Kaikki kirjat</a></li>
+                        <li><a href="{{base_path}}/login">Kirjaudu sisään</a></li>
+                        <li><a href="{{base_path}}/signin">Rekisteröidy käyttäjäksi</a></li>
                     </ul>
+                    {% endif %}
                     {% if is_user %}
                     <ul class="nav navbar-nav">
                         <li><a href="{{base_path}}/list">Oma lista</a></li>
@@ -51,6 +54,12 @@
                     <form class="navbar-form navbar-right" method="post" action="{{base_path}}/">
                         <button type="submit" class="btn btn-default">Kirjaudu ulos</button>
                     </form>
+                    {% endif %}
+                    {% if is_admin %}
+                    <ul class="nav navbar-nav">
+                    <li><a href="{{base_path}}/allbooks">Kaikki kirjat</a></li>
+                    <li><a href="{{base_path}}/allbooks/new">Lisää kirja</a></li>
+                    </ul>
                     {% endif %}
                 </div>
             </div>
