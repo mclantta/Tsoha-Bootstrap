@@ -8,7 +8,7 @@ function check_admin_logged() {
     BaseController::check_admin_logged();
 }
 
-$routes->get('/', function() { //
+$routes->get('/', function() {
     BookController::firstPageBooks();
 });
 $routes->post('/', function() {
@@ -19,7 +19,7 @@ $routes->get('/hiekkalaatikko', function() {
     Controller::sandbox();
 });
 
-$routes->get('/allbooks', function() { //
+$routes->get('/allbooks', function() {
     BookController::listingBooks();
 });
 
@@ -39,10 +39,10 @@ $routes->get('/allbooks/:id/edit', 'check_admin_logged', function($id) {
 $routes->post('/allbooks/:id/edit', 'check_admin_logged', function($id) {
     BookController::updateBook($id);
 });
-$routes->post('/allbooks/:id/delete', 'check_admin_logged', function($id) {
+$routes->post('/allbooks/:id/delete', 'check_admin_logged', function($id) { //
     BookController::deleteBook($id);
 });
-$routes->post('/allbooks/:id/add', 'check_user_logged_in', function($id) {
+$routes->post('/allbooks/:id/add', 'check_user_logged_in', function($id) { 
     ReaderController::addBookToUser($id);
 });
 
@@ -52,7 +52,7 @@ $routes->get('/login', function() {
 $routes->post('/login', function() {
     ReaderController::handleLogin();
 });
-$routes->get('/list', 'check_user_logged_in', function() { //
+$routes->get('/list', 'check_user_logged_in', function() {
     ReaderController::readersList();
 });
 $routes->post('/allbooks/:id/remove', 'check_user_logged_in', function($id) {

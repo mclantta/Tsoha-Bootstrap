@@ -44,5 +44,8 @@ class BaseModel {
             return $error;
         }
     }
+    public function validateLengthNotTooMuch($string, $maxLength) {
+        
+    }
 
 }
