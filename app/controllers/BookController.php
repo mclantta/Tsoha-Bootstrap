@@ -15,7 +15,7 @@ class BookController extends BaseController {
 
         $books = Book::all();
 //        self::sort_books($books);
-        View::make('book/firstpage.html', array('books' => $books));
+        View::make('general/firstpage.html', array('books' => $books));
     }
 
     public static function gettingDetails($id) {

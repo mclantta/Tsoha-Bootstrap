@@ -15,10 +15,6 @@ $routes->post('/', function() {
     ReaderController::logout();
 });
 
-$routes->get('/hiekkalaatikko', function() {
-    Controller::sandbox();
-});
-
 $routes->get('/allbooks', function() {
     BookController::listingBooks();
 });
