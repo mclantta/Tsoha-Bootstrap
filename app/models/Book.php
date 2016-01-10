@@ -6,7 +6,7 @@ class Book extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validateName', 'validateAuthor', 'validatePublishyear', 'validatePages');
+        $this->validators = array('validateName', 'validateAuthor', 'validatePublishyear', 'validatePages', 'validateDescriptionRightLength');
 //        $this->array = array($this->name, $this->author, $this->publishyear, $this->pages, $this->description);
     }
 
@@ -117,6 +117,11 @@ class Book extends BaseModel {
 
     public function validatePages() {
         $errors = parent::validateInteger($this->pages, 'Sivumäärä');
+        return $errors;
+    }
+    
+    public function validateDescriptionRightLength() {
+        $errors = parent::validateLengthNotTooMuch($this->description, 250, 'esittely, oltava alle 250 sanaa');
         return $errors;
     }
 

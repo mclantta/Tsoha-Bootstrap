@@ -6,7 +6,7 @@ class Reader extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validateName', 'validatePassword', 'validateNameNotInUse', 'validateNameRightLength');
+        $this->validators = array('validateName', 'validatePassword', 'validateNameNotInUse', 'validateNameRightLength', 'validatePasswordRightLength');
     }
 
     public static function authenticate($name, $password) {
@@ -135,18 +135,25 @@ class Reader extends BaseModel {
         $row = $query->fetch();
 
         if ($row) {
-            $errors = '"'. $this->name . '"' . ' -käyttäjänimi on jo käytössä. Valitse toinen nimi.';
+            $errors = '"' . $this->name . '"' . ' -käyttäjänimi on jo käytössä. Valitse toinen nimi.';
             return $errors;
-        } 
+        }
     }
+
     public function passwordFieldsAreSame($field) {
         if ($field != $this->password) {
             $oneError = ' Tarjoamasi salasana -kenttien merkkijonot eivät olleet samat. Kirjoita salasanat uudestaan.';
             return $oneError;
         }
     }
+
     public function validateNameRightLength() {
-        $errors = parent::validateLengthNotTooMuch($this->name, 30);
+        $errors = parent::validateLengthNotTooMuch($this->name, 30, 'käyttäjätunnus');
+        return $errors;
+    }
+
+    public function validatePasswordRightLength() {
+        $errors = parent::validateLengthNotTooMuch($this->password, 50, 'salasana');
         return $errors;
     }
 

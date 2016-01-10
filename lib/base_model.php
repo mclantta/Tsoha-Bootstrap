@@ -44,11 +44,11 @@ class BaseModel {
             return $error;
         }
     }
-    public function validateLengthNotTooMuch($string, $maxLength) {
+    public function validateLengthNotTooMuch($string, $maxLength, $field) {
         $length = strlen($string);
         
         if ($length > $maxLength) {
-            $error = 'Liian pitkä merkkijono';
+            $error = 'Liian pitkä merkkijono (' . $field . ')' ;
             return $error;
         }
     }
