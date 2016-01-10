@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * This class uses reader and book models to make all the views that have something to do with the reader (aka user).
+ */
+
 class ReaderController extends BaseController {
 
     public static function login() {
@@ -7,7 +11,7 @@ class ReaderController extends BaseController {
     }
 
     public static function handleLogin() {
-        $params = filter_input_array(INPUT_POST); //check
+        $params = filter_input_array(INPUT_POST);
 
         $reader = Reader::authenticate($params['username'], $params['password']);
 

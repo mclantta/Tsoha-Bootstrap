@@ -68,7 +68,7 @@ class Reader extends BaseModel {
         $query = DB::connection()->prepare('SELECT id, name, author, publishyear, pages, description FROM Book b INNER JOIN Booklist bl ON b.id=bl.book_id WHERE bl.list_id = :list_id');
         $query->execute(array('list_id' => $listId));
 
-        $rows = $query->fetchAll(); //kyselyn tuottamien rivien haku
+        $rows = $query->fetchAll();
         $books = array();
 
         foreach ($rows as $row) {

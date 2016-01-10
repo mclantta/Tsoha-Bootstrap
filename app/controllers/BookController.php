@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * This class uses book model to make book's views.
+ */
+
+
 class BookController extends BaseController {
 
     public static function listingBooks() {

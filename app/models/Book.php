@@ -2,18 +2,17 @@
 
 class Book extends BaseModel {
 
-    public $id, $name, $author, $publishyear, $pages, $description; //$array
+    public $id, $name, $author, $publishyear, $pages, $description;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
         $this->validators = array('validateName', 'validateAuthor', 'validatePublishyear', 'validatePages', 'validateDescriptionRightLength');
-//        $this->array = array($this->name, $this->author, $this->publishyear, $this->pages, $this->description);
     }
 
     public static function all() {
-        $query = DB::connection()->prepare('SELECT * FROM Book'); //tietokantayhteyden alustus
-        $query->execute(); //kyselyn suoritus
-        $rows = $query->fetchAll(); //kyselyn tuottamien rivien haku
+        $query = DB::connection()->prepare('SELECT * FROM Book'); //database connection's initialisation
+        $query->execute(); //executing query
+        $rows = $query->fetchAll();
         $books = array();
 
         foreach ($rows as $row) {
@@ -49,7 +48,6 @@ class Book extends BaseModel {
         return NULL;
     }
 
-    //method works, but looks bad... make better later
     public function save() {
 
         if ($this->publishyear == NULL && $this->pages == NULL) {
@@ -70,7 +68,7 @@ class Book extends BaseModel {
         $this->id = $row['id'];
     }
 
-    public function update() { // same problem than above
+    public function update() {
         if ($this->publishyear == NULL && $this->pages == NULL) {
             $query = DB::connection()->prepare('UPDATE Book
         SET name=:name, author=:author, description=:description
@@ -92,16 +90,10 @@ class Book extends BaseModel {
         WHERE id=:id');
             $query->execute(array('id' => $this->id, 'name' => $this->name, 'author' => $this->author, 'publishyear' => $this->publishyear, 'pages' => $this->pages, 'description' => $this->description));
         }
-//ilman validointia...
-//        $query = DB::connection()->prepare('UPDATE Book
-//        SET name=:name, author=:author, publishyear=:publishyear, pages=:pages, description=:description
-//        WHERE id=:id');
-//        $query->execute(array('id' => $this->id, 'name' => $this->name, 'author' => $this->author, 'publishyear' => $this->publishyear, 'pages' => $this->pages, 'description' => $this->description));
     }
 
     public function validateName() {
         $errors = parent::validateLengthNotNull($this->name, 'Nimi');
-
         return $errors;
     }
 
@@ -119,7 +111,7 @@ class Book extends BaseModel {
         $errors = parent::validateInteger($this->pages, 'Sivumäärä');
         return $errors;
     }
-    
+
     public function validateDescriptionRightLength() {
         $errors = parent::validateLengthNotTooMuch($this->description, 250, 'esittely, oltava alle 250 sanaa');
         return $errors;
